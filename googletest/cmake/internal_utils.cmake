@@ -32,7 +32,7 @@ macro(fix_default_compiler_settings_)
         # preferable to use CRT as static libraries, as we don't have to rely
         # on CRT DLLs being available. CMake always defaults to using shared
         # CRT libraries, so we override that default here.
-        string(REPLACE "/MD" "-MT" ${flag_var} "${${flag_var}}")
+        #string(REPLACE "/MD" "-MT" ${flag_var} "${${flag_var}}")
       endif()
 
       # We prefer more strict warning checking for building Google Test.
@@ -95,7 +95,7 @@ macro(config_compiler_and_linker)
     # explicitly.
     set(cxx_no_rtti_flags "-fno-rtti -DGTEST_HAS_RTTI=0")
     set(cxx_strict_flags
-      "-Wextra -Wno-unused-parameter -Wno-missing-field-initializers")
+      "-Wextra -Wno-unused-parameter")
   elseif (CMAKE_CXX_COMPILER_ID STREQUAL "SunPro")
     set(cxx_exception_flags "-features=except")
     # Sun Pro doesn't provide macros to indicate whether exceptions and
